@@ -13,25 +13,27 @@
         <table class="demo01">
           <tr>
             <th>住所</th>
-            <td>神奈川県横浜市金沢区長浜106-6</td>
+            <td>{{ residence }}</td>
           </tr>
           <tr>
-           <th>ホームページ</th>
-           <td><a href="http://www.hama-midorinokyokai.or.jp/park/nagahama/">http://www.hama-midorinokyokai.or.jp/park/nagahama/</a></td>
+            <th>ホームページ</th>
+            <td>
+              <a v-bind:href="webUrl">{{ webUrl }}</a>
+            </td>
           </tr>
           <tr>
             <th>利用料金</th>
-            <td>2時間:2600円　夜間照明1時間:5300円</td>
+            <td>{{ fee }}</td>
           </tr>
           <tr>
             <th>駐車場</th>
-            <td>75台、駐車場料金等2時間300円　以降20分50円</td>
+            <td>{{ parking }}</td>
           </tr>
         </table>
       </div>
       <h2>アクセス</h2>
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3253.697645364546!2d139.63339311525013!3d35.36314923026974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd672031bc0c6d930!2z6ZW35rWc5YWs5ZySIOmHjueQg-WgtA!5e0!3m2!1sja!2sjp!4v1602934610124!5m2!1sja!2sjp"
+        v-bind:src="googleMapUrl"
         width="100%"
         height="300"
         frameborder="0"
@@ -45,31 +47,31 @@
         <table class="demo01">
           <tr>
             <th>利用種別</th>
-            <td>軟式野球、少年軟式野球、ソフトボール</td>
+            <td>{{ useType }}</td>
           </tr>
           <tr>
             <th>グラウンド種別</th>
-            <td>内野：土、外野：天然芝</td>
+            <td>{{ groundType }}</td>
           </tr>
           <tr>
             <th>広さ</th>
-            <td>両翼72m、中堅85m</td>
+            <td>{{ groundSize }}</td>
           </tr>
           <tr>
             <th>照明</th>
-            <td>あり</td>
+            <td>{{ nightGameLight }}</td>
           </tr>
           <tr>
             <th>ベンチ</th>
-            <td>あり（屋根無し）</td>
+            <td>{{ bench }}</td>
           </tr>
           <tr>
             <th>ブルペン</th>
-            <td>なし</td>
+            <td>{{ bullpen }}</td>
           </tr>
           <tr>
             <th>水場</th>
-            <td>球場入り口横にあり、球場横管理事務所にトイレあり</td>
+            <td>{{ waterPlace }}</td>
           </tr>
         </table>
       </div>
@@ -78,7 +80,9 @@
         <div class="post">
           <p>投稿日：2020/1/12</p>
           <h3>ホームランを稼ぎたいならこの球場</h3>
-          <p>狭いので簡単にホームランが打てます。投手泣かせですが打者にはチャンスかもしれません？</p>
+          <p>
+            狭いので簡単にホームランが打てます。投手泣かせですが打者にはチャンスかもしれません？
+          </p>
         </div>
       </div>
     </div>
@@ -92,12 +96,25 @@ import axios from 'axios'
 import Breadcrumbs, {
   Breadcrumb,
 } from '../../../components/molecules/Breadcrumbs.vue'
+import { Context } from '@nuxt/types'
 
 @Component({
   components: { Breadcrumbs },
 })
 export default class BallparkDetail extends Vue {
-  private name = '長浜公園野球場'
+  private name = ''
+  private residence = ''
+  private webUrl = ''
+  private fee = ''
+  private parking = ''
+  private googleMapUrl = ''
+  private useType = ''
+  private groundType = ''
+  private groundSize = ''
+  private nightGameLight = ''
+  private bench = ''
+  private bullpen = ''
+  private waterPlace = ''
 
   private breadcrumbs: Array<Breadcrumb> = [
     {
@@ -116,6 +133,25 @@ export default class BallparkDetail extends Vue {
       href: '',
     },
   ]
+
+  async asyncData(context: Context) {
+    const response = await axios.get(`http://0.0.0.0:8080/${context.params.id}`)
+    return {
+      name: response.data.name,
+      residence: response.data.residence,
+      webUrl: response.data.webUrl,
+      fee: response.data.fee,
+      parking: response.data.parking,
+      googleMapUrl: response.data.googleMapUrl,
+      useType: response.data.useType,
+      groundType: response.data.groundType,
+      groundSize: response.data.groundSize,
+      nightGameLight: response.data.nightGameLight,
+      bench: response.data.bench,
+      bullpen: response.data.bullpen,
+      waterPlace: response.data.waterPlace,
+    }
+  }
 }
 </script>
 
@@ -160,5 +196,4 @@ th
   max-width: 100%
   height: auto
   border-bottom: 1px solid #ddd
-
 </style>

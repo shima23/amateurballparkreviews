@@ -65,7 +65,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(item, key) in tableItems" :key="key" v-on:click="selectRows()"  class="items">
+            <tr v-for="(item, key) in tableItems" :key="key" v-on:click="selectRows(item.id)"  class="items">
               <td>{{ item.prefectures }}</td>
               <td>{{ item.municipalities }}</td>
               <td>{{ item.name }}</td>
@@ -147,8 +147,8 @@ export default class Account extends Vue {
 
   private tableItems: Array<TableBallParkDto> = []
 
-  private selectRows() {
-    this.$router.push("/ballpark/detail")
+  private selectRows(id: number) {
+    this.$router.push({ path: `/ballpark/detail/${id}`})
   }
 
   private async search() {
@@ -247,45 +247,4 @@ tr.items:hover
   background-color: #d9efff
   cursor: pointer
 
-.star5_rating
-    position: relative
-    z-index: 0
-    display: inline-block
-    white-space: nowrap
-    color: #CCCCCC
-
-.star5_rating:before, .star5_rating:after
-    content: '★★★★★'
-
-.star5_rating:after
-    position: absolute
-    z-index: 1
-    top: 0
-    left: 0
-    overflow: hidden
-    white-space: nowrap
-    color: #ffcf32
-
-.star5_rating[data-rate="5"]:after
-  width: 100%
-.star5_rating[data-rate="4.5"]:after
-  width: 90%
-.star5_rating[data-rate="4"]:after
-  width: 80%
-.star5_rating[data-rate="3.5"]:after
-  width: 70%
-.star5_rating[data-rate="3"]:after
-  width: 60%
-.star5_rating[data-rate="2.5"]:after
-  width: 50%
-.star5_rating[data-rate="2"]:after
-  width: 40%
-.star5_rating[data-rate="1.5"]:after
-  width: 30%
-.star5_rating[data-rate="1"]:after
-  width: 20%
-.star5_rating[data-rate="0.5"]:after
-  width: 10%
-.star5_rating[data-rate="0"]:after
-  width: 0%
 </style>
