@@ -4,7 +4,7 @@
           <Breadcrumbs :breadcrumbs="breadcrumbs" />
           <h1>ログイン</h1>
           <v-text-field v-model="mailAddress" label="メールアドレス"></v-text-field>
-          <v-text-field v-model="password" label="パスワード"></v-text-field>
+          <v-text-field v-model="password" :type="'password'" label="パスワード"></v-text-field>
           <v-btn elevation="1" v-on:click="login()">ログイン</v-btn>
         </div>
     </v-container>
@@ -48,6 +48,8 @@ export default class Login extends Vue {
       mailAddress: this.$data.mailAddress,
       password: this.$data.password
     })
+
+    alert(response.data.loginResult)
 
     this.$router.push({ path: `/`})
   }
