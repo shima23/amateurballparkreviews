@@ -4,9 +4,9 @@
       <v-toolbar-title v-text="title" />
       <v-spacer />
       <v-toolbar-items>
-        <v-btn v-for="(item, i) in items" :key="i" :to="item.to" elevation="0">
-          {{ item.title }}
-        </v-btn>
+        <v-btn v-if="loginResult == false" elevation="0" link nuxt to="/account/register">会員登録</v-btn>
+        <v-btn v-if="loginResult == false" elevation="0" link nuxt to="/login">ログイン</v-btn>
+        <v-btn v-if="loginResult == true" elevation="0" ><v-icon>mdi-menu</v-icon></v-btn>
       </v-toolbar-items>
     </v-app-bar>
     <v-main>
@@ -33,10 +33,11 @@ export default class Default extends Vue {
   private rightDrawer: boolean = false
   private title: string = 'Amateur Ballpark Reviews'
 
-  private items = [
-    { title: '会員登録', to: '/account/register'},
-    { title: 'ログイン', to: '/login'}
-  ]
+  data(){
+    return {
+       loginResult: false
+    }
+  }
 
 }
 </script>

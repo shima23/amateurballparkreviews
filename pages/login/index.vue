@@ -49,7 +49,8 @@ export default class Login extends Vue {
       password: this.$data.password
     })
 
-    alert(response.data.loginResult)
+    sessionStorage.setItem('loginResult', response.data.loginResult)
+    sessionStorage.setItem('accessKey', response.data.accessKey)
 
     this.$router.push({ path: `/`})
   }
