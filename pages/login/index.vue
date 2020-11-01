@@ -43,16 +43,27 @@ export default class Login extends Vue {
   }
 
   private async login() {
+    try {
+        const response = await this.$auth.loginWith('local', {
+            data: {
+                mailAddress: this.$data.mailAddress,
+                password: this.$data.password
+            }
+        })
+    } catch (err) {
+        alert(err)
+    }
 
-    const response = await axios.post("http://0.0.0.0:8080/login", {
-      mailAddress: this.$data.mailAddress,
-      password: this.$data.password
-    })
+    
+    // const response = await axios.post("http://0.0.0.0:8080/login", {
+    //   mailAddress: this.$data.mailAddress,
+    //   password: this.$data.password
+    // })
 
-    sessionStorage.setItem('loginResult', response.data.loginResult)
-    sessionStorage.setItem('accessKey', response.data.accessKey)
+    // sessionStorage.setItem('loginResult', response.data.loginResult)
+    // sessionStorage.setItem('accessKey', response.data.accessKey)
 
-    this.$router.push({ path: `/`})
+    // this.$router.push({ path: `/`})
   }
 }
 </script>

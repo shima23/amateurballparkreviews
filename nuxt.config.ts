@@ -1,5 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
-
+import { Auth } from 'nuxtjs__auth'
 export default {
   // Disable server-side rendering (https://go.nuxtjs.dev/ssr-mode)
   ssr: false,
@@ -44,13 +44,45 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    '@nuxtjs/auth',
+    '@nuxtjs/proxy',
   ],
   styleResources: {
     sass: ['~/assets/sass/base.sass']
   },
+  auth: {
+    redirect: {
+      // 未ログイン時に認証ルートにアクセスした際のリダイレクト先
+      login: '/login',
+      // ログアウト時のリダイレクト先
+      logout: false,
+      // ログイン後のリダイレクト先
+      home: '/'
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url : '/api/login', method: 'post', propertyName: 'accessKey' }
+        }
+      }
+    }
+  },
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
+  axios: {
+    proxy: true,
+    baseURL: 'http://localhost:8080/',
+  },
+
+  // CORS回避の設定
+  proxy: {
+    '/api/': {
+      target: 'http://localhost:8080/',
+      pathRewrite: {'^/api/': ''},
+      changeOrigin: true,
+      secure: false
+    }
+  },
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
   vuetify: {
