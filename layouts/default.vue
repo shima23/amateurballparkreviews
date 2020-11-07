@@ -4,9 +4,18 @@
       <v-toolbar-title v-text="title" />
       <v-spacer />
       <v-toolbar-items>
-        <v-btn v-if="loginResult == false" elevation="0" link nuxt to="/account/register">会員登録</v-btn>
-        <v-btn v-if="loginResult == false" elevation="0" link nuxt to="/login">ログイン</v-btn>
-        <v-btn v-if="loginResult == true" elevation="0" ><v-icon>mdi-menu</v-icon></v-btn>
+        <v-btn
+          v-if="!$auth.loggedIn"
+          elevation="0"
+          link
+          nuxt
+          to="/account/register"
+          >会員登録</v-btn
+        >
+        <v-btn v-if="!$auth.loggedIn" elevation="0" link nuxt to="/login"
+          >ログイン</v-btn
+        >
+        <AccountMenu v-if="$auth.loggedIn" />
       </v-toolbar-items>
     </v-app-bar>
     <v-main>
@@ -21,9 +30,14 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator' 
+import { Vue, Component } from 'nuxt-property-decorator'
+import AccountMenu from '~/components/molecules/AccountMenu/AccountMenu.vue'
 
-@Component({})
+@Component({
+  components: {
+    AccountMenu,
+  },
+})
 export default class Default extends Vue {
   private clipped: boolean = false
   private drawer: boolean = false
@@ -33,14 +47,11 @@ export default class Default extends Vue {
   private rightDrawer: boolean = false
   private title: string = 'Amateur Ballpark Reviews'
 
-  data(){
+  data() {
     return {
-       loginResult: false
+      loginResult: false,
     }
   }
-
 }
 </script>
-<style>
-
-</style>
+<style></style>

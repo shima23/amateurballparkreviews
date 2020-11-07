@@ -1,13 +1,17 @@
 <template>
-    <v-container>
-        <div class="account">
-          <Breadcrumbs :breadcrumbs="breadcrumbs" />
-          <h1>ログイン</h1>
-          <v-text-field v-model="mailAddress" label="メールアドレス"></v-text-field>
-          <v-text-field v-model="password" :type="'password'" label="パスワード"></v-text-field>
-          <v-btn elevation="1" v-on:click="login()">ログイン</v-btn>
-        </div>
-    </v-container>
+  <v-container>
+    <div class="account">
+      <Breadcrumbs :breadcrumbs="breadcrumbs" />
+      <h1>ログイン</h1>
+      <v-text-field v-model="mailAddress" label="メールアドレス"></v-text-field>
+      <v-text-field
+        v-model="password"
+        :type="'password'"
+        label="パスワード"
+      ></v-text-field>
+      <v-btn elevation="1" v-on:click="login()">ログイン</v-btn>
+    </div>
+  </v-container>
 </template>
 
 <script lang="ts">
@@ -35,38 +39,21 @@ export default class Login extends Vue {
     },
   ]
 
-  data(){
+  data() {
     return {
-       mailAddress: '',
-       password: ''
+      mailAddress: '',
+      password: '',
     }
   }
 
   private async login() {
-    try {
-        const response = await this.$auth.loginWith('local', {
-            data: {
-                mailAddress: this.$data.mailAddress,
-                password: this.$data.password
-            }
-        })
-    } catch (err) {
-        alert(err)
-    }
-
-    
-    // const response = await axios.post("http://0.0.0.0:8080/login", {
-    //   mailAddress: this.$data.mailAddress,
-    //   password: this.$data.password
-    // })
-
-    // sessionStorage.setItem('loginResult', response.data.loginResult)
-    // sessionStorage.setItem('accessKey', response.data.accessKey)
-
-    // this.$router.push({ path: `/`})
+    let response = await this.$auth.loginWith('local', {
+      data: {
+        mailAddress: this.$data.mailAddress,
+        password: this.$data.password,
+      },
+    })
   }
 }
 </script>
-<style lang="sass" scoped>
-.account
-</style>
+<style lang="sass" scoped></style>

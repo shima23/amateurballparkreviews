@@ -1,17 +1,17 @@
 <template>
-    <v-container>
-        <div class="account">
-          <Breadcrumbs :breadcrumbs="breadcrumbs" />
-          <h1>会員登録完了</h1>
-          <p>会員登録が完了しました。</p>
-          <p>
-            登録いただいたメールアドレス宛に仮パスワードを送信しましたので、
-            <br>
-            画面右上のログイン画面より、ログインしてください。
-          </p>
-          <v-btn elevation="1">ホームへ戻る</v-btn>
-        </div>
-    </v-container>
+  <v-container>
+    <div class="account">
+      <Breadcrumbs :breadcrumbs="breadcrumbs" />
+      <h1>会員登録完了</h1>
+      <p>会員登録が完了しました。</p>
+      <p>
+        登録いただいたメールアドレス宛に仮パスワードを送信しましたので、
+        <br />
+        画面右上のログイン画面より、ログインしてください。
+      </p>
+      <v-btn elevation="1">ホームへ戻る</v-btn>
+    </div>
+  </v-container>
 </template>
 
 <script lang="ts">
@@ -45,10 +45,8 @@ export default class AccountCompleted extends Vue {
   ]
 
   private selectBtn() {
-    this.$router.push({ path: `/`})
+    this.$router.push({ path: `/` })
   }
 }
 </script>
-<style lang="sass" scoped>
-.account
-</style>
+<style lang="sass" scoped></style>

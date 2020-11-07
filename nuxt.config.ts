@@ -46,24 +46,26 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
     '@nuxtjs/auth',
-    '@nuxtjs/proxy',
   ],
   styleResources: {
     sass: ['~/assets/sass/base.sass']
   },
   auth: {
+    fetchUserOnLogin: false,
     redirect: {
       // 未ログイン時に認証ルートにアクセスした際のリダイレクト先
       login: '/login',
       // ログアウト時のリダイレクト先
-      logout: false,
+      logout: '/',
       // ログイン後のリダイレクト先
       home: '/'
     },
     strategies: {
       local: {
         endpoints: {
-          login: { url : '/api/login', method: 'post', propertyName: 'accessKey' }
+          login: { url : '/api/login', method: 'post', propertyName: 'token' },
+          logout: { url : '/api/logout', method: 'post' },
+          user: { url: '/api/auth/user', method: 'get', propertyName: 'user' }
         }
       }
     }
@@ -79,8 +81,6 @@ export default {
     '/api/': {
       target: 'http://localhost:8080/',
       pathRewrite: {'^/api/': ''},
-      changeOrigin: true,
-      secure: false
     }
   },
 

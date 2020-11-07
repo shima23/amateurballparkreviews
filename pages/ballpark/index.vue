@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <div class="account">
-    <Breadcrumbs :breadcrumbs="breadcrumbs" />
+      <Breadcrumbs :breadcrumbs="breadcrumbs" />
       <h1>球場検索</h1>
       <div>
         <div class="detail-search">
@@ -43,12 +43,17 @@
               <p>フリーワード</p>
             </div>
             <div class="detail-right">
-              <input type="text" class="text-box" v-model="name"/>
+              <input type="text" class="text-box" v-model="name" />
             </div>
             <div class="clear" />
           </div>
           <div class="detail-serach-btn">
-            <input class="sbtn" type="submit" value="検索" v-on:click="search()" />
+            <input
+              class="sbtn"
+              type="submit"
+              value="検索"
+              v-on:click="search()"
+            />
           </div>
         </div>
       </div>
@@ -65,7 +70,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(item, key) in tableItems" :key="key" v-on:click="selectRows(item.id)"  class="items">
+            <tr
+              v-for="(item, key) in tableItems"
+              :key="key"
+              v-on:click="selectRows(item.id)"
+              class="items"
+            >
               <td>{{ item.prefectures }}</td>
               <td>{{ item.municipalities }}</td>
               <td>{{ item.name }}</td>
@@ -85,23 +95,31 @@
 import { Vue, Component } from 'nuxt-property-decorator'
 import Router from 'vue-router'
 import axios from 'axios'
-import Breadcrumbs, { Breadcrumb } from '../../components/molecules/Breadcrumbs.vue'
+import Breadcrumbs, {
+  Breadcrumb,
+} from '../../components/molecules/Breadcrumbs.vue'
 
 Vue.use(Router)
 
 class TableBallParkDto {
-    prefectures: string
-    municipalities: string
-    name: string
-    rating: string
+  prefectures: string
+  municipalities: string
+  name: string
+  rating: string
+  count: number
+  constructor(
+    prefectures: string,
+    municipalities: string,
+    name: string,
+    rating: string,
     count: number
-    constructor(prefectures: string, municipalities: string, name: string, rating: string, count: number) {
-      this.prefectures = prefectures
-      this.municipalities = municipalities
-      this.name = name
-      this.rating = rating
-      this.count = count
-    }
+  ) {
+    this.prefectures = prefectures
+    this.municipalities = municipalities
+    this.name = name
+    this.rating = rating
+    this.count = count
+  }
 }
 
 class BallparkSearchRequestDto {
@@ -113,10 +131,9 @@ class BallparkSearchRequestDto {
 
 @Component
 export default class Account extends Vue {
-
-  data(){
+  data() {
     return {
-       name: ''
+      name: '',
     }
   }
 
@@ -128,46 +145,44 @@ export default class Account extends Vue {
     'count',
   ]
 
-  private reqDto : BallparkSearchRequestDto = {
-    name: ''
+  private reqDto: BallparkSearchRequestDto = {
+    name: '',
   }
 
   private breadcrumbs = [
     {
       text: 'ホーム',
       disabled: false,
-      href: '/'
+      href: '/',
     },
     {
       text: '球場検索',
       disabled: true,
-      href: ''
-    }
+      href: '',
+    },
   ]
 
   private tableItems: Array<TableBallParkDto> = []
 
   private selectRows(id: number) {
-    this.$router.push({ path: `/ballpark/detail/${id}`})
+    this.$router.push({ path: `/ballpark/detail/${id}` })
   }
 
   private async search() {
     this.tableItems.length = 0
-    const response = await axios.post("http://0.0.0.0:8080/list/search", {
-      name: this.$data.name
+    const response = await axios.post('http://0.0.0.0:8080/list/search', {
+      name: this.$data.name,
     })
     this.tableItems = response.data
   }
-
 }
 </script>
 <style lang="sass" scoped>
-.account
 
 .search-keyword
   padding-top: 10px
   padding-bottom: 10px
-  
+
 .text-box
   max-width: 100%
   width: 300px
@@ -246,5 +261,4 @@ table td a
 tr.items:hover
   background-color: #d9efff
   cursor: pointer
-
 </style>
