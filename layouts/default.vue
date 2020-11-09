@@ -1,7 +1,9 @@
 <template>
   <v-app dark>
     <v-app-bar :clipped-left="clipped" dense fixed app dark elevation="0">
-      <v-toolbar-title v-text="title" />
+      <router-link to="/" class="toolbar-title">
+        <v-toolbar-title v-text="title" />
+      </router-link>
       <v-spacer />
       <v-toolbar-items>
         <v-btn
@@ -54,4 +56,10 @@ export default class Default extends Vue {
   }
 }
 </script>
-<style></style>
+<style lang="sass" scope>
+.toolbar-title
+  color: #ffffff !important
+  text-decoration: none
+.toolbar-title:hover
+  color: #DDDDDD !important
+</style>
