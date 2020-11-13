@@ -1,29 +1,18 @@
-<template>
-  <div class="custom-container">
-    <div class="test">
-      <img src="https://i.imgur.com/RUcLg1s.png" class="image" />
-      <div>{{ nickname }}</div>
-      <div>{{ mailAddress }}</div>
-    </div>
-    <div class="user-infomation">
-      <div class="side-bar">
-        <ul>
-          <li
-            v-for="(item, key) in menuList"
-            :key="key"
-            v-on:click="clickMenu(item.index)"
-          >
-            <a href="#">{{ item.name }}</a>
-          </li>
-        </ul>
-      </div>
-      <div class="menu-child">
-        <Profile v-if="$data.activeMenu === 0" />
-        <ChangePassword v-if="$data.activeMenu === 3" />
-        <Suspend v-if="$data.activeMenu === 4" />
-      </div>
-    </div>
-  </div>
+<template lang="pug">
+  div.-custom-container
+    div.-test
+      img(src="https://i.imgur.com/RUcLg1s.png").-image
+      div {{ nickname }}
+      div {{ mailAddress }}
+    div.-user-infomation
+      div.-side-bar
+        ul
+          li(v-for="(item, key) in menuList" :key="key" @click="clickMenu(item.index)")
+            a(href="#") {{ item.name }}
+      div.-menu-child
+        Profile(v-if="$data.activeMenu === 0")
+        ChangePassword(v-if="$data.activeMenu === 3")
+        Suspend(v-if="$data.activeMenu === 4")
 </template>
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator'
@@ -76,29 +65,29 @@ export default class Mypage extends Vue {
 }
 </script>
 <style lang="sass" scoped>
-.custom-container
+.-custom-container
   min-height: 100%
   padding-bottom: 16px
   background: #efefef !important
-.test
+.-test
   width: 100%
   background: linear-gradient(#757f9a, #d7dde8)
   min-height: 300px
   margin: 0 auto
   padding-top: 20px
   text-align: center
-.image
+.-image
   max-width: 200px
   max-height: 200px
   border-radius: 130px
-.user-infomation
+.-user-infomation
   display: flex
   flex-direction: row
   width: 1200px
   padding-top: 10px
   margin: 0 auto
-.side-bar
-.menu-child
+.-side-bar
+.-menu-child
   width: 100%
   padding-left: 16px
 ul

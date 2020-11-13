@@ -1,17 +1,13 @@
-<template>
-  <v-breadcrumbs :items="breadcrumbs">
-    <template v-slot:item="props">
-      <v-breadcrumbs-item
+<template lang="pug">
+  v-breadcrumbs(:items="breadcrumbs").-v-breadcrumbs
+    template(v-slot:item="props")
+      v-breadcrumbs-item(
         exact
         :disabled="props.item.disabled"
         :to="props.item.href"
         nuxt
         class="breadcrumb"
-      >
-        {{ props.item.text }}
-      </v-breadcrumbs-item>
-    </template>
-  </v-breadcrumbs>
+      ) {{ props.item.text }}
 </template>
 
 <script lang="ts">
@@ -30,7 +26,7 @@ export default class Breadcrumbs extends Vue {
 </script>
 
 <style lang="sass">
-.v-breadcrumbs
+.-v-breadcrumbs
     padding-left: 0px  !important
     padding-top: 0px !important
     padding-bottom: 5px !important

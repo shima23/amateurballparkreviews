@@ -1,17 +1,11 @@
-<template>
-  <v-container>
-    <div class="account">
-      <Breadcrumbs :breadcrumbs="breadcrumbs" />
-      <h1>ログイン</h1>
-      <v-text-field v-model="mailAddress" label="メールアドレス"></v-text-field>
-      <v-text-field
-        v-model="password"
-        :type="'password'"
-        label="パスワード"
-      ></v-text-field>
-      <v-btn elevation="1" v-on:click="login()">ログイン</v-btn>
-    </div>
-  </v-container>
+<template lang="pug">
+  v-container
+    div
+      Breadcrumbs(:breadcrumbs="breadcrumbs")
+      h1 ログイン
+      v-text-field(v-model="mailAddress" label="メールアドレス")
+      v-text-field(v-model="password" :type="'password'" label="パスワード")
+      v-btn(elevation="1" @click="login()") ログイン
 </template>
 
 <script lang="ts">

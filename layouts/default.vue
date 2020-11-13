@@ -1,34 +1,18 @@
-<template>
-  <v-app dark>
-    <v-app-bar :clipped-left="clipped" dense fixed app dark elevation="0">
-      <router-link to="/" class="toolbar-title">
-        <v-toolbar-title v-text="title" />
-      </router-link>
-      <v-spacer />
-      <v-toolbar-items>
-        <v-btn
-          v-if="!$auth.loggedIn"
-          elevation="0"
-          link
-          nuxt
-          to="/account/register"
-          >会員登録</v-btn
-        >
-        <v-btn v-if="!$auth.loggedIn" elevation="0" link nuxt to="/login"
-          >ログイン</v-btn
-        >
-        <AccountMenu v-if="$auth.loggedIn" />
-      </v-toolbar-items>
-    </v-app-bar>
-    <v-main>
-      <nuxt />
-    </v-main>
-    <v-footer absolute dark app>
-      <v-layout justify-center>
-        <span>&copy; 2020 shima23. All Rights Reserved.</span>
-      </v-layout>
-    </v-footer>
-  </v-app>
+<template lang="pug">
+  v-app(dark)
+    v-app-bar(:clipped-left="clipped" dense fixed app dark elevation="0")
+      router-link(to="/").toolbar-title
+        v-toolbar-title(v-text="title")
+      v-spacer
+      v-toolbar-items
+        v-btn(v-if="!$auth.loggedIn" elevation="0" link nuxt to="/account/register") 会員登録
+        v-btn(v-if="!$auth.loggedIn" elevation="0" link nuxt to="/login") ログイン
+        AccountMenu(v-if="$auth.loggedIn")
+    v-main
+      nuxt
+    v-footer(absolute dark app)
+      v-layout(justify-center)
+        span &copy; 2020 shima23. All Rights Reserved.
 </template>
 
 <script lang="ts">

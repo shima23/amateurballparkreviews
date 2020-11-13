@@ -1,94 +1,70 @@
-<template>
-  <v-container>
-    <div class="account">
-      <Breadcrumbs :breadcrumbs="breadcrumbs" />
-      <h1>球場検索</h1>
-      <div>
-        <div class="detail-search">
-          <div>
-            <div class="detail-left">
-              <p>地域</p>
-            </div>
-            <div class="detail-right">
-              <input type="checkbox" value="0" />東京都
-              <input type="checkbox" value="1" />神奈川県
-              <input type="checkbox" value="2" />埼玉県
-              <input type="checkbox" value="3" />千葉県
-            </div>
-            <div class="clear" />
-          </div>
-          <div>
-            <div class="detail-left">
-              <p>グラウンド形式</p>
-            </div>
-            <div class="detail-right">
-              <input type="checkbox" value="0" />対面式
-              <input type="checkbox" value="1" />独立
-            </div>
-            <div class="clear" />
-          </div>
-          <div>
-            <div class="detail-left">
-              <p>グラウンド種別</p>
-            </div>
-            <div class="detail-right">
-              <input type="checkbox" value="0" />土
-              <input type="checkbox" value="1" />天然芝
-              <input type="checkbox" value="2" />人工芝
-            </div>
-            <div class="clear" />
-          </div>
-          <div>
-            <div class="detail-left">
-              <p>フリーワード</p>
-            </div>
-            <div class="detail-right">
-              <input type="text" class="text-box" v-model="name" />
-            </div>
-            <div class="clear" />
-          </div>
-          <div class="detail-serach-btn">
-            <input
-              class="sbtn"
-              type="submit"
-              value="検索"
-              v-on:click="search()"
-            />
-          </div>
-        </div>
-      </div>
-      <div>
-        <h2>検索結果</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>都道府県</th>
-              <th>市区町村</th>
-              <th>球場名</th>
-              <th>ユーザー評価</th>
-              <th>レビュー件数</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              v-for="(item, key) in tableItems"
-              :key="key"
-              v-on:click="selectRows(item.id)"
-              class="items"
-            >
-              <td>{{ item.prefectures }}</td>
-              <td>{{ item.municipalities }}</td>
-              <td>{{ item.name }}</td>
-              <td>
-                <span class="star5_rating" :data-rate="item.rating"></span>
-              </td>
-              <td><v-icon>mdi-comment-outline</v-icon> {{ item.count }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </v-container>
+<template lang="pug">
+  v-container
+    div.account
+      Breadcrumbs(:breadcrumbs="breadcrumbs")
+      h1 球場検索
+      div
+        div.detail-search
+          div
+            div.detail-left
+              p 地域
+            div.detail-right
+              input(type="checkbox" value="0") 
+              | 東京都
+              input(type="checkbox" value="1")
+              | 神奈川県
+              input(type="checkbox" value="2")
+              | 埼玉県
+              input(type="checkbox" value="3")
+              | 千葉県
+            div.clear
+          div
+            div.detail-left
+              p グラウンド形式
+            div.detail-right
+              input(type="checkbox" value="0")
+              | 対面式
+              input(type="checkbox" value="1")
+              | 独立
+            div.clear
+          div
+            div.detail-left
+              p グラウンド種別
+            div.detail-right
+              input(type="checkbox" value="0")
+              | 土
+              input(type="checkbox" value="1")
+              | 天然芝
+              input(type="checkbox" value="2")
+              | 人工芝
+            div.clear
+          div
+            div.detail-left
+              p フリーワード
+            div.detail-right
+              input(type="text" v-model="name").text-box 
+            div.clear
+          div.detail-serach-btn
+            input(type="submit" value="検索" @click="search()").sbtn
+      div
+        h2 検索結果
+        table
+          thead
+            tr
+              th 都道府県
+              th 市区町村
+              th 球場名
+              th ユーザー評価
+              th レビュー件数
+          tbody
+            tr(v-for="(item, key) in tableItems" :key="key" @click="selectRows(item.id)").items
+              td {{ item.prefectures }}
+              td {{ item.municipalities }}
+              td {{ item.name }}
+              td
+                span(:data-rate="item.rating").star5_rating
+              td
+                v-icon mdi-comment-outline {{ item.count }}
 </template>
 
 <script lang="ts">

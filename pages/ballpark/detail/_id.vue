@@ -1,38 +1,30 @@
-<template>
-  <v-container>
-    <div class="detail">
-      <Breadcrumbs :breadcrumbs="breadcrumbs" />
-      <h1>{{ name }}</h1>
-      <div class="tips-parent">
-        <span class="tips">徒歩15分以内</span>
-        <span class="tips">シャワー有</span>
-        <span class="tips">独立式</span>
-      </div>
-      <h2>基本情報</h2>
-      <div class="base-info">
-        <table class="demo01">
-          <tr>
-            <th>住所</th>
-            <td>{{ residence }}</td>
-          </tr>
-          <tr>
-            <th>ホームページ</th>
-            <td>
-              <a v-bind:href="webUrl">{{ webUrl }}</a>
-            </td>
-          </tr>
-          <tr>
-            <th>利用料金</th>
-            <td>{{ fee }}</td>
-          </tr>
-          <tr>
-            <th>駐車場</th>
-            <td>{{ parking }}</td>
-          </tr>
-        </table>
-      </div>
-      <h2>アクセス</h2>
-      <iframe
+<template lang="pug">
+  v-container
+    div.detail
+      Breadcrumbs(:breadcrumbs="breadcrumbs")
+      h1 {{ name }}
+      div.tips-parent
+        span.tips 徒歩15分以内
+        span.tips シャワー有
+        span.tips 独立式
+      h2 基本情報
+      div.base-info
+        table.demo01
+          tr
+            th 住所
+            td {{ residence }}
+          tr
+            th ホームページ
+            td
+              a(v-bind:href="webUrl") {{ webUrl }}
+          tr
+            th 利用料金
+            td {{ fee }}
+          tr
+            th 駐車場
+            td {{ parking }}
+      h2 アクセス
+      iframe(
         v-bind:src="googleMapUrl"
         width="100%"
         height="300"
@@ -41,52 +33,37 @@
         allowfullscreen=""
         aria-hidden="false"
         tabindex="0"
-      ></iframe>
-      <h2>グラウンド情報</h2>
-      <div class="base-info">
-        <table class="demo01">
-          <tr>
-            <th>利用種別</th>
-            <td>{{ useType }}</td>
-          </tr>
-          <tr>
-            <th>グラウンド種別</th>
-            <td>{{ groundType }}</td>
-          </tr>
-          <tr>
-            <th>広さ</th>
-            <td>{{ groundSize }}</td>
-          </tr>
-          <tr>
-            <th>照明</th>
-            <td>{{ nightGameLight }}</td>
-          </tr>
-          <tr>
-            <th>ベンチ</th>
-            <td>{{ bench }}</td>
-          </tr>
-          <tr>
-            <th>ブルペン</th>
-            <td>{{ bullpen }}</td>
-          </tr>
-          <tr>
-            <th>水場</th>
-            <td>{{ waterPlace }}</td>
-          </tr>
-        </table>
-      </div>
-      <h2>みんなの評価</h2>
-      <div class="reviews">
-        <div class="post">
-          <p>投稿日：2020/1/12</p>
-          <h3>ホームランを稼ぎたいならこの球場</h3>
-          <p>
-            狭いので簡単にホームランが打てます。投手泣かせですが打者にはチャンスかもしれません？
-          </p>
-        </div>
-      </div>
-    </div>
-  </v-container>
+      )
+      h2 グラウンド情報
+      div.base-info
+        table.demo01
+          tr
+            th 利用種別
+            td {{ useType }}
+          tr
+            th グラウンド種別
+            td {{ groundType }}
+          tr
+            th 広さ
+            td {{ groundSize }}
+          tr
+            th 照明
+            td {{ nightGameLight }}
+          tr
+            th ベンチ
+            td {{ bench }}
+          tr
+            th ブルペン
+            td {{ bullpen }}
+          tr
+            th 水場
+            td {{ waterPlace }}
+      h2 みんなの評価
+      div.reviews
+        div.post
+          p 投稿日：2020/1/12
+          h3 ホームランを稼ぎたいならこの球場
+          p 狭いので簡単にホームランが打てます。投手泣かせですが打者にはチャンスかもしれません？
 </template>
 
 <script lang="ts">

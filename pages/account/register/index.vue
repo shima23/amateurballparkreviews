@@ -1,13 +1,11 @@
-<template>
-  <v-container>
-    <div class="account">
-      <Breadcrumbs :breadcrumbs="breadcrumbs" />
-      <h1>会員登録</h1>
-      <v-text-field v-model="mailAddress" label="メールアドレス"></v-text-field>
-      <v-text-field v-model="nickname" label="ニックネーム"></v-text-field>
-      <v-btn elevation="1" v-on:click="register()">登録する</v-btn>
-    </div>
-  </v-container>
+<template lang="pug">
+  v-container
+    div
+      Breadcrumbs(:breadcrumbs="breadcrumbs")
+      h1 会員登録
+      v-text-field(v-model="mailAddress" label="メールアドレス")
+      v-text-field(v-model="nickname" label="ニックネーム")
+      v-btn(elevation="1" @click="register()") 登録する
 </template>
 
 <script lang="ts">
@@ -21,7 +19,7 @@ import Breadcrumbs, {
 Vue.use(Router)
 
 @Component
-export default class Account extends Vue {
+export default class AccountRegisterCompleted extends Vue {
   private breadcrumbs = [
     {
       text: 'ホーム',
