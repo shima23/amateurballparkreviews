@@ -1,24 +1,58 @@
 <template lang="pug">
   div.top
-    div.contents
-      p.home-text1 Let's enjoy Baseball.
-      p.home-text2 Amateur Ballpark Reviewsは、草野球(軟式野球)プレイヤーのための「みんなで作る」球場レビューサイトです。
-      div(@click="selectSearch()").circle
-        p.menu-title
-          v-icon(color="#ffffff") mdi-magnify
-          | 球場検索
-        p.menu-text ・条件を入力し、野球場を検索
-        p.menu-text ・各球場のレビューを閲覧・投稿できます
-      div.circle
-        p.menu-title
-          v-icon(color="#ffffff") mdi-star-outline
-          | 球場ランキング
-        p.menu-text ・ユーザーが評価した人気球場ランキング
-      div.circle
-        p.menu-title 
-          v-icon(color="#ffffff") mdi-feather
-          | 野球場レポート
-        p.menu-text ・みんなで作る1つの野球場ブログ
+    section.-header
+      h1 Let's enjoy Baseball.
+      p JB-Links
+    div.-contents-title
+      h2 What's New
+    section.-whats-new
+      div.-news
+        p 2020/11/15
+          span.-message 施設リーグ検索にお問い合わせフォームを追加しました
+        p 2020/11/10
+          span.-message 公式ブログ更新（11/10）
+        p 2020/10/28
+          span.-message サイトリニューアルのお知らせ
+        p 2020/09/24
+          span.-message 利用規約を一部更新しました
+        div.-before-news
+          nuxt-link(to="/news")
+            p 過去のお知らせはこちら
+    div.-contents-title
+      h2 Contents
+    section.-contents-card
+      div.-card
+        div.-contents-image
+          img(src="../static/logo/team-logo.png").-image
+        p チーム検索
+      div.-card
+        div.-contents-image
+          img(src="../static/logo/team-logo.png").-image
+        p チーム登録/チーム管理
+      div.-card
+       div.-contents-image
+          img(src="../static/logo/player-logo.png").-image
+       p メンバー募集
+      div.-card
+        div.-contents-image
+          img(src="../static/logo/league-logo.png").-image
+        p リーグ検索
+      div.-card
+        div.-contents-image
+          img(src="../static/logo/player-search-logo.png").-image
+        p 選手検索
+      div.-card
+        div.-contents-image
+          img(src="../static/logo/ballpark-logo.png").-image
+        p 球場検索
+      div.-card
+        div.-contents-image
+          img(src="../static/logo/score-logo.png").-image
+        p メンバー表/スコアシート生成
+      div.-card
+        div.-contents-image
+          img(src="../static/logo/blog-logo.png").-image
+        p 公式ブログ
 </template>
 
 <script lang="ts">
@@ -29,7 +63,7 @@ import axios from 'axios'
 Vue.use(Router)
 
 @Component
-export default class Account extends Vue {
+export default class Top extends Vue {
   private selectSearch() {
     this.$router.push('/ballpark')
   }
@@ -37,57 +71,60 @@ export default class Account extends Vue {
 </script>
 <style lang="sass">
 .top
-  background: url("../static/ballpark.jpg") no-repeat center center fixed #000000
-  -webkit-background-size: cover
-  -moz-background-size: cover
-  -o-background-size: cover
-  background-size: cover
-  opacity: 0.8
-  min-height: 100%
-
-.home-text1
-  font-size: 50px
-  color: #ffffff
-  font-family: 'Open Sans', sans-serif
-  font-weight: bold
-
-.home-text2
-  font-size: 16px
-  color: #ffffff
-  font-family: 'Open Sans', sans-serif
-  font-weight: bold
-
-.contents
-  padding-top: 50px
-  padding-left: 50px
-
-.circle
-  width: 300px
-  height: 120px
-  border-radius: 20px
-  box-shadow: 5px 10px 20px rgba(0,0,0,0.25)
-  line-height: 5px
-  background: rgba(0,0,0,0.9)
-  margin-left: auto
-  margin-right: 20px
-  margin-top: 20px
-  padding-top: 10px
-
-.circle:hover
-  cursor: pointer
-  background-color: #555555
-  border: solid 1px #999999
-
-.menu-title
-  font-size: 20px
-  padding-left: 5px
-  color: #ffffff
-
-.menu-text
-  font-size: 12px
-  padding-left: 10px
-  color: #ffffff
-
-body
-  height: 100%
+  .-header
+    background: url("../static/ballpark.jpg")
+    background-size: cover
+    height: 480px
+    padding: 100px
+    box-sizing: border-box
+    color: #fff
+  .-contents-title
+    text-align: center
+    padding: 8px
+    background: #ffffff
+  .-whats-new
+    display: flex
+    justify-content: center
+    align-items: center
+    background: #e6e6e6
+    height: auto
+    min-height: 300px
+    .-news
+      padding: 24px
+      width: 66%
+      height: auto
+      background: #ffffff
+      font-size: 14px
+      .-message
+        padding-left: 36px
+      .-before-news
+        font-size: 14px
+        text-align: right
+  .-contents-card
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    padding: 3%
+    box-sizing: border-box
+    background: #e6e6e6
+  .-contents-card div
+    width: 23%
+    height: 300px
+    margin: 0 0 2.5vw
+    padding: 1%
+    box-sizing: border-box
+    background: #ffffff
+    text-align: center
+    .-contents-image
+      width: 100%
+      height: auto
+      max-height: 100px
+    .-image
+      width: 33%
+      height: 33%
+  .-card
+  .-card:hover
+     background: #696969
+     color: #ffffff
+     cursor: pointer
 </style>

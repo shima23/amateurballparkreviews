@@ -2,7 +2,7 @@
   v-app(dark)
     v-app-bar(:clipped-left="clipped" dense fixed app dark elevation="0")
       router-link(to="/").toolbar-title
-        v-toolbar-title(v-text="title")
+        img(src="../static/logo.png").-logo
       v-spacer
       v-toolbar-items
         v-btn(v-if="!$auth.loggedIn" elevation="0" link nuxt to="/account/register") 会員登録
@@ -46,4 +46,8 @@ export default class Default extends Vue {
   text-decoration: none
 .toolbar-title:hover
   color: #DDDDDD !important
+.-logo
+  margin: auto
+  width: 150px
+  height: auto
 </style>

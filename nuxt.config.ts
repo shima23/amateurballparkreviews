@@ -6,8 +6,8 @@ export default {
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    titleTemplate: '%s - Amateur Ballpark Reviews',
-    title: 'Amateur Ballpark Reviews',
+    titleTemplate: '%s',
+    title: 'JB-Links',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },

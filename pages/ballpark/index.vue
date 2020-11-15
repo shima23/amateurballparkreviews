@@ -2,7 +2,6 @@
   v-container
     div.account
       Breadcrumbs(:breadcrumbs="breadcrumbs")
-      h1 球場検索
       div
         div.detail-search
           div
@@ -47,7 +46,6 @@
           div.detail-serach-btn
             input(type="submit" value="検索" @click="search()").sbtn
       div
-        h2 検索結果
         table
           thead
             tr
