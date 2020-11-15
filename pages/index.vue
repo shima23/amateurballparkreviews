@@ -3,56 +3,56 @@
     section.-header
       h1 Let's enjoy Baseball.
       p JB-Links
-    div.-contents-title
-      h2 What's New
-    section.-whats-new
-      div.-news
-        p 2020/11/15
-          span.-message 施設リーグ検索にお問い合わせフォームを追加しました
-        p 2020/11/10
-          span.-message 公式ブログ更新（11/10）
-        p 2020/10/28
-          span.-message サイトリニューアルのお知らせ
-        p 2020/09/24
-          span.-message 利用規約を一部更新しました
-        div.-before-news
-          nuxt-link(to="/news")
-            p 過去のお知らせはこちら
-    div.-contents-title
-      h2 Contents
-    section.-contents-card
-      div.-card
-        div.-contents-image
-          img(src="../static/logo/team-logo.png").-image
-        p チーム検索
-      div.-card
-        div.-contents-image
-          img(src="../static/logo/team-logo.png").-image
-        p チーム登録/チーム管理
-      div.-card
-       div.-contents-image
-          img(src="../static/logo/player-logo.png").-image
-       p メンバー募集
-      div.-card
-        div.-contents-image
-          img(src="../static/logo/league-logo.png").-image
-        p リーグ検索
-      div.-card
-        div.-contents-image
-          img(src="../static/logo/player-search-logo.png").-image
-        p 選手検索
-      div.-card
-        div.-contents-image
-          img(src="../static/logo/ballpark-logo.png").-image
-        p 球場検索
-      div.-card
-        div.-contents-image
-          img(src="../static/logo/score-logo.png").-image
-        p メンバー表/スコアシート生成
-      div.-card
-        div.-contents-image
-          img(src="../static/logo/blog-logo.png").-image
-        p 公式ブログ
+    section
+      h1.-contents-title What's New
+      div.-whats-new
+        div.-news
+          p 2020/11/15
+            span.-message 施設リーグ検索にお問い合わせフォームを追加しました
+          p 2020/11/10
+            span.-message 公式ブログ更新（11/10）
+          p 2020/10/28
+            span.-message サイトリニューアルのお知らせ
+          p 2020/09/24
+            span.-message 利用規約を一部更新しました
+          div.-before-news
+            nuxt-link(to="/news")
+              p 過去のお知らせはこちら
+    section
+      h1.-contents-title Contents
+      div.-contents-card
+        div.-card
+          div.-contents-image
+            img(src="../static/logo/team-logo.png").-image
+          p チーム検索
+        div.-card
+          div.-contents-image
+            img(src="../static/logo/team-logo.png").-image
+          p チーム登録/チーム管理
+        div.-card
+          div.-contents-image
+            img(src="../static/logo/player-logo.png").-image
+          p メンバー募集
+        div.-card
+          div.-contents-image
+            img(src="../static/logo/league-logo.png").-image
+          p リーグ検索
+        div.-card
+          div.-contents-image
+            img(src="../static/logo/player-search-logo.png").-image
+          p 選手検索
+        div.-card
+          div.-contents-image
+            img(src="../static/logo/ballpark-logo.png").-image
+          p 球場検索
+        div.-card
+          div.-contents-image
+            img(src="../static/logo/score-logo.png").-image
+          p メンバー表/スコアシート生成
+        div.-card
+          div.-contents-image
+            img(src="../static/logo/blog-logo.png").-image
+          p 公式ブログ
 </template>
 
 <script lang="ts">
@@ -115,6 +115,7 @@ export default class Top extends Vue {
     box-sizing: border-box
     background: #ffffff
     text-align: center
+    border-radius: 16px
     .-contents-image
       width: 100%
       height: auto
