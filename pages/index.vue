@@ -3,18 +3,13 @@
     section.-header
       h1 Let's enjoy Baseball.
       p JB-Links
+      nuxt-link(v-if="!$auth.loggedIn" to="/account/register").-btn-icon 無料会員登録
     section
       h1.-contents-title What's New
       div.-whats-new
         div.-news
-          p 2020/11/15
-            span.-message 施設リーグ検索にお問い合わせフォームを追加しました
-          p 2020/11/10
-            span.-message 公式ブログ更新（11/10）
-          p 2020/10/28
-            span.-message サイトリニューアルのお知らせ
-          p 2020/09/24
-            span.-message 利用規約を一部更新しました
+          p(v-for="(item, index) in news") {{item.date}}
+            span.-message {{item.text}}
           div.-before-news
             nuxt-link(to="/news")
               p 過去のお知らせはこちら
@@ -64,6 +59,25 @@ Vue.use(Router)
 
 @Component
 export default class Top extends Vue {
+  private news = [
+    {
+      date: '2020/11/15',
+      text: '施設リーグ検索にお問い合わせフォームを追加しました',
+    },
+    {
+      date: '2020/11/10',
+      text: '公式ブログ更新（11/10）',
+    },
+    {
+      date: '2020/10/28',
+      text: 'サイトリニューアルのお知らせ',
+    },
+    {
+      date: '2020/09/24',
+      text: '利用規約を一部更新しました',
+    },
+  ]
+
   private selectSearch() {
     this.$router.push('/ballpark')
   }
@@ -78,6 +92,13 @@ export default class Top extends Vue {
     padding: 100px
     box-sizing: border-box
     color: #fff
+  .-btn-icon
+    max-width: 240px
+    padding: 16px
+    background: rgba(255,255,255,0.1)
+    text-decoration: none
+    font-size: 20px
+    color: #000000
   .-contents-title
     text-align: center
     padding: 8px
