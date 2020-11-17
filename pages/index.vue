@@ -16,38 +16,10 @@
     section
       h1.-contents-title Contents
       div.-contents-card
-        div.-card
+        div(v-for="(item, index) in contentsCard").-card
           div.-contents-image
-            img(src="../static/logo/team-logo.png").-image
-          p チーム検索
-        div.-card
-          div.-contents-image
-            img(src="../static/logo/team-logo.png").-image
-          p チーム登録/チーム管理
-        div.-card
-          div.-contents-image
-            img(src="../static/logo/player-logo.png").-image
-          p メンバー募集
-        div.-card
-          div.-contents-image
-            img(src="../static/logo/league-logo.png").-image
-          p リーグ検索
-        div.-card
-          div.-contents-image
-            img(src="../static/logo/player-search-logo.png").-image
-          p 選手検索
-        div.-card
-          div.-contents-image
-            img(src="../static/logo/ballpark-logo.png").-image
-          p 球場検索
-        div.-card
-          div.-contents-image
-            img(src="../static/logo/score-logo.png").-image
-          p メンバー表/スコアシート生成
-        div.-card
-          div.-contents-image
-            img(src="../static/logo/blog-logo.png").-image
-          p 公式ブログ
+            img(:src="item.imgSrc").-image
+            p {{item.title}}
 </template>
 
 <script lang="ts">
@@ -59,6 +31,56 @@ Vue.use(Router)
 
 @Component
 export default class Top extends Vue {
+  private contentsCard = [
+    {
+      imgSrc: '/_nuxt/static/logo/team-logo.png',
+      title: 'チーム検索',
+      text: '',
+      to: '',
+    },
+    {
+      imgSrc: '/_nuxt/static/logo/team-logo.png',
+      title: 'チーム登録/チーム管理',
+      text: '',
+      to: '',
+    },
+    {
+      imgSrc: '/_nuxt/static/logo/player-logo.png',
+      title: 'メンバー募集',
+      text: '',
+      to: '',
+    },
+    {
+      imgSrc: '/_nuxt/static/logo/league-logo.png',
+      title: 'リーグ検索',
+      text: '',
+      to: '',
+    },
+    {
+      imgSrc: '/_nuxt/static/logo/player-search-logo.png',
+      title: '選手検索',
+      text: '',
+      to: '',
+    },
+    {
+      imgSrc: '/_nuxt/static/logo/ballpark-logo.png',
+      title: '球場検索',
+      text: '',
+      to: '',
+    },
+    {
+      imgSrc: '/_nuxt/static/logo/score-logo.png',
+      title: 'メンバー表/スコアシート生成',
+      text: '',
+      to: '',
+    },
+    {
+      imgSrc: '/_nuxt/static/logo/blog-logo.png',
+      title: '公式ブログ',
+      text: '',
+      to: '',
+    },
+  ]
   private news = [
     {
       date: '2020/11/15',
@@ -144,6 +166,7 @@ export default class Top extends Vue {
     .-image
       width: 33%
       height: 33%
+      margin-bottom: 24px
   .-card
   .-card:hover
      background: #696969
