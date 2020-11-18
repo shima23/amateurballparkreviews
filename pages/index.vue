@@ -20,6 +20,7 @@
           div.-contents-image
             img(:src="item.imgSrc").-image
             p {{item.title}}
+            p {{item.text}}
 </template>
 
 <script lang="ts">
@@ -33,51 +34,51 @@ Vue.use(Router)
 export default class Top extends Vue {
   private contentsCard = [
     {
-      imgSrc: '/_nuxt/static/logo/team-logo.png',
+      imgSrc: '/_nuxt/static/logo/team.png',
       title: 'チーム検索',
-      text: '',
+      text: '登録されているチームを検索します',
       to: '',
     },
     {
-      imgSrc: '/_nuxt/static/logo/team-logo.png',
+      imgSrc: '/_nuxt/static/logo/team.png',
       title: 'チーム登録/チーム管理',
-      text: '',
+      text: 'あなたの所属するチームを新規登録、および管理します',
       to: '',
     },
     {
-      imgSrc: '/_nuxt/static/logo/player-logo.png',
+      imgSrc: '/_nuxt/static/logo/player.png',
       title: 'メンバー募集',
-      text: '',
+      text: '新規メンバーの募集を確認できます',
       to: '',
     },
     {
-      imgSrc: '/_nuxt/static/logo/league-logo.png',
+      imgSrc: '/_nuxt/static/logo/league.png',
       title: 'リーグ検索',
-      text: '',
+      text: '地域・レベルから私設リーグを検索します',
       to: '',
     },
     {
-      imgSrc: '/_nuxt/static/logo/player-search-logo.png',
+      imgSrc: '/_nuxt/static/logo/player-search.png',
       title: '選手検索',
-      text: '',
+      text: '登録されている選手を検索します',
       to: '',
     },
     {
-      imgSrc: '/_nuxt/static/logo/ballpark-logo.png',
+      imgSrc: '/_nuxt/static/logo/ballpark.png',
       title: '球場検索',
-      text: '',
+      text: '全国の球場を検索します',
       to: '',
     },
     {
-      imgSrc: '/_nuxt/static/logo/score-logo.png',
+      imgSrc: '/_nuxt/static/logo/score.png',
       title: 'メンバー表/スコアシート生成',
-      text: '',
+      text: 'メンバー表やスコアシートの雛形をPDF形式で出力します',
       to: '',
     },
     {
-      imgSrc: '/_nuxt/static/logo/blog-logo.png',
+      imgSrc: '/_nuxt/static/logo/blog.png',
       title: '公式ブログ',
-      text: '',
+      text: 'JB-Links運営の広報がお伝えする公式ブログです！',
       to: '',
     },
   ]
