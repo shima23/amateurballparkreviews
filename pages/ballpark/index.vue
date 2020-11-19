@@ -104,7 +104,7 @@ class BallparkSearchRequestDto {
 }
 
 @Component
-export default class Account extends Vue {
+export default class Ballpark extends Vue {
   data() {
     return {
       name: '',
