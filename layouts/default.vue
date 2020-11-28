@@ -1,8 +1,8 @@
 <template lang="pug">
   v-app(dark)
-    v-app-bar(:clipped-left="clipped" dense fixed app dark elevation="0")
-      router-link(to="/").toolbar-title
-        img(src="../static/logo.png").-logo
+    v-app-bar(:clipped-left="clipped" dense fixed app color="white" elevation="0")
+      router-link(to="/")
+        v-toolbar-title(v-text="title").toolbar-title
       v-spacer
       v-toolbar-items
         v-btn(v-if="!$auth.loggedIn" elevation="0" link nuxt to="/account/register") 会員登録
@@ -31,7 +31,7 @@ export default class Default extends Vue {
   private miniVariant: boolean = false
   private right: boolean = true
   private rightDrawer: boolean = false
-  private title: string = 'Amateur Ballpark Reviews'
+  private title: string = 'JB-Links'
 
   data() {
     return {
@@ -42,10 +42,11 @@ export default class Default extends Vue {
 </script>
 <style lang="sass" scope>
 .toolbar-title
-  color: #ffffff !important
-  text-decoration: none
+  color: #000000 !important
+  text-decoration: none !important
+  font-size: 28px !important
 .toolbar-title:hover
-  color: #DDDDDD !important
+  color: #999999 !important
 .-logo
   margin: auto
   width: 150px
