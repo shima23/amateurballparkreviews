@@ -10,9 +10,9 @@
         AccountMenu(v-if="$auth.loggedIn")
     v-main
       nuxt
-    v-footer(absolute dark app)
+    v-footer(absolute dark app height="300")
       v-layout(justify-center)
-        span &copy; 2020 shima23. All Rights Reserved.
+        span 
 </template>
 
 <script lang="ts">

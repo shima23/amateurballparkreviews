@@ -8,13 +8,13 @@
       div.mt-xs.flex-p-c
         p Private League
     Content(maxWidth="100%")
-      div.mt-xl.flex-p-c
+      div.mt-xxl.flex-p-c
         h2 About Private League
       div.mt-m.-description
         p JB-Linksでは、草野球の私設リーグ運営を簡単に行うことのできるシステムを提供しています。
         p すでに登録されているリーグの検索、新規にリーグを立ち上げることが可能です。
     Content(maxWidth="100%")
-      div.mt-xl.flex-p-c
+      div.mt-xxl.flex-p-c
         h2 私設リーグを検索する
       div.mt-m.flex-p-c
         p 地域を選択後、検索ページでレベルなどで詳細な検索が可能です。
@@ -26,7 +26,7 @@
               td
                 span(v-for="pref in item.prefs" @click="onClick") {{ pref }}
     Content(maxWidth="100%")
-      div.mt-xl.flex-p-c
+      div.mt-xxl.flex-p-c
         h2 新しく施設リーグを登録する
       div.mt-m.-description
         p あなたが主宰、または管理する私設リーグを登録します。登録後は、マイページからリーグに関する情報の編集が可能です。
@@ -95,7 +95,7 @@ export default class League extends Vue {
   ]
 
   private onClick() {
-    alert('aaa')
+    this.$router.push('/league/search')
   }
 }
 </script>
@@ -104,7 +104,7 @@ export default class League extends Vue {
   font-size: 14px !important
   .-heading
     padding: 12px 0
-    background: #F7FAFC
+    background: #dfeaf2
   h2
     font-size: 24px
   .-description
@@ -129,7 +129,7 @@ export default class League extends Vue {
       text-decoration: underline
   .-search-outer
     width: 100%
-    background: #f1f1f1
+    background: url("../../static/bg/bg_pattern_00.gif") repeat scroll 0 0 transparent
   .-search
     width: 500px
     margin: 12px
