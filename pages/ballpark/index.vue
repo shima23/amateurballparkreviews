@@ -144,9 +144,13 @@ export default class Ballpark extends Vue {
 
   private async search() {
     this.tableItems.length = 0
-    const response = await axios.post('http://0.0.0.0:8080/list/search', {
-      name: this.$data.name,
-    })
+    var config = {
+      headers: {
+        Authorization: this.$auth.getToken('local'),
+      },
+    }
+    const url = 'http://0.0.0.0:8080/list/search'
+    const response = await axios.post(url, { name: this.$data.name }, config)
     this.tableItems = response.data
   }
 }

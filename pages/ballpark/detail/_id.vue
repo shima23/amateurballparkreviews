@@ -93,6 +93,8 @@ export default class BallparkDetail extends Vue {
   private bullpen = ''
   private waterPlace = ''
 
+  private hogeId = 1
+
   private breadcrumbs: Array<Breadcrumb> = [
     {
       text: 'ホーム',
@@ -112,7 +114,22 @@ export default class BallparkDetail extends Vue {
   ]
 
   async asyncData(context: Context) {
-    const response = await axios.get(`http://0.0.0.0:8080/${context.params.id}`)
+    //alert(context.params.id)
+  }
+
+  created() {
+    //alert(this.id)
+    this.getDetail()
+  }
+
+  private async getDetail() {
+    var config = {
+      headers: {
+        Authorization: this.$auth.getToken('local'),
+      },
+    }
+    const url = `http://0.0.0.0:8080/1`
+    const response = await axios.get(url, config)
     return {
       name: response.data.name,
       residence: response.data.residence,

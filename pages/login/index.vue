@@ -3,8 +3,8 @@
     div
       Breadcrumbs(:breadcrumbs="breadcrumbs")
       h1 ログイン
-      v-text-field(v-model="mailAddress" label="メールアドレス")
-      v-text-field(v-model="password" :type="'password'" label="パスワード")
+      v-text-field(v-model="loginRequestDto.mailAddress" label="メールアドレス")
+      v-text-field(v-model="loginRequestDto.password" :type="'password'" label="パスワード")
       v-btn(elevation="1" @click="login()") ログイン
 </template>
 
@@ -12,11 +12,8 @@
 import { Vue, Component } from 'nuxt-property-decorator'
 import Router from 'vue-router'
 import axios from 'axios'
-import Breadcrumbs, {
-  Breadcrumb,
-} from '../../components/molecules/Breadcrumbs.vue'
-
-Vue.use(Router)
+import Breadcrumbs from '../../components/molecules/Breadcrumbs.vue'
+import { LoginRequestDto } from '~/types/types'
 
 @Component
 export default class Login extends Vue {
@@ -33,18 +30,16 @@ export default class Login extends Vue {
     },
   ]
 
-  data() {
-    return {
-      mailAddress: '',
-      password: '',
-    }
+  private loginRequestDto: LoginRequestDto = {
+    mailAddress: '',
+    password: '',
   }
 
   private async login() {
     let response = await this.$auth.loginWith('local', {
       data: {
-        mailAddress: this.$data.mailAddress,
-        password: this.$data.password,
+        mailAddress: this.loginRequestDto.mailAddress,
+        password: this.loginRequestDto.password,
       },
     })
   }

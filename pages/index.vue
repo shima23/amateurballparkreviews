@@ -17,10 +17,11 @@
       h1.-contents-title Contents
       div.-contents-card
         div(v-for="(item, index) in contentsCard").-card
-          div.-contents-image
-            img(:src="item.imgSrc").-image
-            p {{item.title}}
-            p {{item.text}}
+          nuxt-link(:to="item.to")
+            div.-contents-image
+              img(:src="item.imgSrc").-image
+              p {{item.title}}
+              p {{item.text}}
 </template>
 
 <script lang="ts">
@@ -55,7 +56,7 @@ export default class Top extends Vue {
       imgSrc: '/_nuxt/static/logo/league.png',
       title: 'リーグ検索',
       text: '地域・レベルから私設リーグを検索します',
-      to: '',
+      to: '/league',
     },
     {
       imgSrc: '/_nuxt/static/logo/player-search.png',

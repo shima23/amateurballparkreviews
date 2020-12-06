@@ -14,10 +14,11 @@
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator'
 import axios from 'axios'
+import { ChangePasswordRequestDto } from '~/types/types'
 
 @Component({})
 export default class ChangePassword extends Vue {
-  private reqDto = {
+  private reqDto: ChangePasswordRequestDto = {
     oldPassword: '',
     newPassword: '',
   }
@@ -29,7 +30,6 @@ export default class ChangePassword extends Vue {
         Authorization: this.$auth.getToken('local'),
       },
     }
-
     const response = await axios.post(url, this.reqDto, config)
   }
 }
