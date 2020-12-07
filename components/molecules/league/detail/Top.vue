@@ -1,31 +1,48 @@
 <template lang="pug">
   div.-top
-   h2 お知らせ
-   div.-news
-     p(v-for="(item, key) in news" :key="key") {{item}}
-   h2 最近の試合
-   div
-   h2 タイトル争い
-   h3 打率
-   h3 本塁打
-   h3 打点
-   h3 勝利数
-   h3 防御率
-   h3 奪三振
+    div.-carouseles
+      v-carousel(height="400px").mt-s
+        v-carousel-item(
+          v-for="(item,i) in items"
+          :key="i"
+          :src="item.src"
+          reverse-transition="fade-transition"
+          transition="fade-transition")
+    h2.mt-m League Leaders
+    div.mb-xxl.-stats
+      StatsCard(v-for="(leaderStats, i) in leaderStatsList" :key="i" :leaderStats="leaderStats").mt-s.mr-s
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'nuxt-property-decorator'
+import StatsCard from '~/components/molecules/league/detail/StatsCard.vue'
+import { LeaderStats } from '~/types/types'
 
 @Component
 export default class LeagueDetailTop extends Vue {
-  @Prop({ default: [] }) private news?: string[]
+  @Prop({ default: [] }) private leaderStatsList?: LeaderStats[]
+
+  private items = [
+    {
+      src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
+    },
+    {
+      src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
+    },
+    {
+      src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg',
+    },
+    {
+      src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
+    },
+  ]
 }
 </script>
 <style lang="sass">
 .-top
-  .-news
-    padding: 8px
-    min-height: 150px
-    border: 1px solid
+  .-carouseles
+    width: 640px
+  .-stats
+    display: flex
+    justify-content: wrap
 </style>

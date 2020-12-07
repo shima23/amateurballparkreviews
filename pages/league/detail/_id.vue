@@ -9,7 +9,8 @@
       li 日程表
       li 順位表
       li 個人成績
-    Top(:news="leagueDto.news")
+      li 過去のお知らせ
+    Top(:leaderStatsList="leagueDto.leaderStatsList")
 </template>
 
 <script lang="ts">
@@ -30,9 +31,55 @@ export default class LeagueDetailPage extends Vue {
 
   private leagueDto = {
     leagueName: '',
-    news: [
-      '[2020/10/20]お知らせお知らせお知らせお知らせお知らせ',
-      '[2020/10/20]お知らせお知らせお知らせお知らせお知らせ',
+    leaderStatsList: [
+      {
+        title: '打率',
+        rank1user: '高島',
+        rank1team: '横浜メッツ',
+        rank1stats: '.421',
+        rank2user: '田中',
+        rank2team: 'Flutters',
+        rank2stats: '.404',
+        rank3user: '織田',
+        rank3team: 'シャドウズ',
+        rank3stats: '.398',
+      },
+      {
+        title: '本塁打',
+        rank1user: '田中',
+        rank1team: 'Flutters',
+        rank1stats: '6本',
+        rank2user: '織田',
+        rank2team: 'シャドウズ',
+        rank2stats: '3本',
+        rank3user: '村田',
+        rank3team: '球運会',
+        rank3stats: '2本',
+      },
+      {
+        title: '勝利数',
+        rank1user: '藤井',
+        rank1team: '横浜メッツ',
+        rank1stats: '4勝',
+        rank2user: '河田',
+        rank2team: '球運会',
+        rank2stats: '3勝',
+        rank3user: '沢井',
+        rank3team: '横浜メッツ',
+        rank3stats: '2勝',
+      },
+      {
+        title: '防御率',
+        rank1user: '藤井',
+        rank1team: '横浜メッツ',
+        rank1stats: '1.84',
+        rank2user: '久保',
+        rank2team: 'Flutters',
+        rank2stats: '2.38',
+        rank3user: '河田',
+        rank3team: '球運会',
+        rank3stats: '3.55',
+      },
     ],
   }
 
