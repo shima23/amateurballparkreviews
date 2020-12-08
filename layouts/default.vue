@@ -1,7 +1,7 @@
 <template lang="pug">
   v-app(dark)
-    v-app-bar(:clipped-left="clipped" dense fixed app color="white" elevation="0")
-      router-link(to="/")
+    v-app-bar(:clipped-left="clipped" dense fixed app dark elevation="2")
+      router-link(to="/" tag="div").-logo
         v-toolbar-title(v-text="title").toolbar-title
       v-spacer
       v-toolbar-items
@@ -10,7 +10,7 @@
         AccountMenu(v-if="$auth.loggedIn")
     v-main
       nuxt
-    v-footer(absolute dark app height="300")
+    v-footer(absolute app height="300" color="313131")
       v-layout(justify-center)
         span 
 </template>
@@ -42,13 +42,10 @@ export default class Default extends Vue {
 </script>
 <style lang="sass" scope>
 .toolbar-title
-  color: #000000 !important
+  color: #ffffff !important
   text-decoration: none !important
   font-size: 28px !important
-.toolbar-title:hover
-  color: #999999 !important
+  padding-left: 12px
 .-logo
-  margin: auto
-  width: 150px
-  height: auto
+  cursor: pointer
 </style>

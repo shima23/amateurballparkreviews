@@ -3,14 +3,9 @@
     Breadcrumbs(:breadcrumbs="breadcrumbs")
     h1 {{leagueDto.leagueName}}
     ul.mt-s.-nav
-      li リーグトップ
-      li リーグ概要
-      li 所属チーム
-      li 日程表
-      li 順位表
-      li 個人成績
-      li 過去のお知らせ
-    Top(:leaderStatsList="leagueDto.leaderStatsList")
+      li(v-for="(item, key) in menuList" :key="key" @click="clickMenu(item.index)") {{ item.name }}
+    Top(v-if="activeMenu === 0" :leaderStatsList="leagueDto.leaderStatsList")
+    Standings(v-if="activeMenu === 4")
 </template>
 
 <script lang="ts">
@@ -19,6 +14,7 @@ import { LeagueDto } from '~/types/types'
 import { Breadcrumb } from '~/components/molecules/Breadcrumbs.vue'
 import Content from '~/components/molecules/wrapper/Content.vue'
 import Top from '~/components/molecules/league/detail/Top.vue'
+import Standings from '~/components/molecules/league/detail/Standings.vue'
 
 @Component
 export default class LeagueDetailPage extends Vue {
@@ -27,6 +23,18 @@ export default class LeagueDetailPage extends Vue {
     { text: '私設リーグ', disabled: false, href: '/league' },
     { text: 'リーグ検索', disabled: false, href: '/league/search' },
     { text: 'リーグ詳細', disabled: true, href: '' },
+  ]
+
+  private activeMenu = 0
+
+  private menuList = [
+    { index: 0, name: 'リーグトップ' },
+    { index: 1, name: 'リーグ概要' },
+    { index: 2, name: '所属チーム' },
+    { index: 3, name: '日程表' },
+    { index: 4, name: '順位表' },
+    { index: 5, name: '個人成績' },
+    { index: 6, name: '過去のお知らせ' },
   ]
 
   private leagueDto = {
@@ -86,6 +94,10 @@ export default class LeagueDetailPage extends Vue {
   created() {
     this.leagueDto.leagueName = '横浜プラネットリーグ'
   }
+
+  private clickMenu(index: number) {
+    this.$data.activeMenu = index
+  }
 }
 </script>
 <style lang="sass">
@@ -102,4 +114,8 @@ export default class LeagueDetailPage extends Vue {
     line-height: 50px
     margin-right: 2px
     color: #fff
+  .-nav li:hover
+    color: #fff
+    background-color: #a9a9a9
+    cursor: pointer
 </style>

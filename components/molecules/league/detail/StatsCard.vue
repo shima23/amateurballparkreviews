@@ -1,6 +1,6 @@
 <template lang="pug">
   div.stats-card
-    h2 {{leaderStats.title}}
+    h2.mb-s {{leaderStats.title}}
     p
       span 1 {{leaderStats.rank1user}} {{leaderStats.rank1team}} {{leaderStats.rank1stats}}
     p
@@ -24,5 +24,9 @@ export default class LeagueDetailStatsCard extends Vue {
   padding: 8px
   background-color: #fff
   border: 1px solid #cdcdcd
+  border-left: 8px solid #808080
   border-radius: 4px
+  h2
+    font-size: 20px
+    font-weight: normal
 </style>

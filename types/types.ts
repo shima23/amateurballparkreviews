@@ -24,3 +24,17 @@ export interface LeaderStats {
     rank3team: string
     rank3stats: string
 }
+
+export interface StantingTeam {
+    order: number
+    teamNeme: string
+    games: number
+    win: number
+    lose: number
+    draw: number
+    winRate: string
+    battingRuns: number
+    pitchingRuns: number
+    teamBattingAvg: string
+    teamEra: string
+}
