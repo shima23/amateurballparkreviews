@@ -38,3 +38,7 @@ export interface StantingTeam {
     teamBattingAvg: string
     teamEra: string
 }
+
+export interface AllStandings {
+    yearStandingMap: {[key: string]: Array<StantingTeam>; };
+}

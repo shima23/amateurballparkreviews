@@ -6,6 +6,7 @@
       li(v-for="(item, key) in menuList" :key="key" @click="clickMenu(item.index)") {{ item.name }}
     Top(v-if="activeMenu === 0" :leaderStatsList="leagueDto.leaderStatsList")
     Standings(v-if="activeMenu === 4")
+    Stats(v-if="activeMenu===5")
 </template>
 
 <script lang="ts">
@@ -15,6 +16,7 @@ import { Breadcrumb } from '~/components/molecules/Breadcrumbs.vue'
 import Content from '~/components/molecules/wrapper/Content.vue'
 import Top from '~/components/molecules/league/detail/Top.vue'
 import Standings from '~/components/molecules/league/detail/Standings.vue'
+import Stats from '~/components/molecules/league/detail/Stats.vue'
 
 @Component
 export default class LeagueDetailPage extends Vue {
