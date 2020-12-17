@@ -8,10 +8,14 @@
         option(v-for="(team, index) in teams" :value="team" :label="team")
       input(type="checkbox").ml-m
       span.ml-s 規定投球回/規定打席未満を含む
+      Batting(v-if="isBatter").mt-m
+      Pitching(v-else).mt-m
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'nuxt-property-decorator'
+import Batting from '~/components/molecules/league/detail/Batting.vue'
+import Pitching from '~/components/molecules/league/detail/Pitching.vue'
 
 @Component
 export default class Stats extends Vue {
