@@ -42,3 +42,22 @@ export interface StantingTeam {
 export interface AllStandings {
     yearStandingMap: {[key: string]: Array<StantingTeam>; };
 }
+
+export interface PitchingStats {
+    order: number
+    player: string
+    teamName: string
+    pitched: string
+    win: string
+    lose: string
+    era: string
+    winRate: string
+    inning: string
+    hits: string
+    hr: string
+    so: string
+    bb: string
+    db: string
+    run: string
+    er: string
+}
