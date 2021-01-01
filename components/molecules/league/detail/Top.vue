@@ -34,16 +34,16 @@ export default class LeagueDetailTop extends Vue {
 
   private items = [
     {
-      src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
+      src: '/no_image.png',
     },
     {
-      src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
+      src: '/no_image.png',
     },
     {
-      src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg',
+      src: '/no_image.png',
     },
     {
-      src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
+      src: '/no_image.png',
     },
   ]
 }

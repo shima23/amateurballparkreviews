@@ -12,7 +12,9 @@
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator'
 import { LeagueDto } from '~/types/types'
+import { LeagueResponse } from '~/types/api'
 import { Breadcrumb } from '~/components/molecules/Breadcrumbs.vue'
+import axios from 'axios'
 import Content from '~/components/molecules/wrapper/Content.vue'
 import Top from '~/components/molecules/league/detail/Top.vue'
 import Standings from '~/components/molecules/league/detail/Standings.vue'
@@ -38,6 +40,8 @@ export default class LeagueDetailPage extends Vue {
     { index: 5, name: '個人成績' },
     { index: 6, name: '過去のお知らせ' },
   ]
+
+  private leagueInfo: any
 
   private leagueDto = {
     leagueName: '',
@@ -94,7 +98,18 @@ export default class LeagueDetailPage extends Vue {
   }
 
   created() {
-    this.leagueDto.leagueName = '横浜プラネットリーグ'
+    this.getLeague()
+  }
+
+  private async getLeague() {
+    const response = await this.$store.dispatch('modules/league/getLeague', {
+      leagueId: this.$route.params.id,
+      token: this.$auth.getToken('local'),
+    })
+    if (response.status === 200) {
+      this.leagueInfo = this.$store.getters['modules/league/leagueResponse']
+      this.leagueDto.leagueName = this.leagueInfo.league.leagueName
+    }
   }
 
   private clickMenu(index: number) {

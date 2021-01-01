@@ -41,7 +41,7 @@ export default class Standings extends Vue {
   private standings: Array<StantingTeam> = []
   private allStandings: AllStandings = {
     yearStandingMap: {
-      '2020': [
+      '2021': [
         {
           order: 1,
           teamNeme: '横浜メッツ',
@@ -95,7 +95,7 @@ export default class Standings extends Vue {
           teamEra: '6.42',
         },
       ],
-      '2019': [
+      '2020': [
         {
           order: 1,
           teamNeme: '横浜メッツ',
@@ -140,6 +140,7 @@ export default class Standings extends Vue {
     this.selectedYear = year
     this.standings = []
     const standing = this.allStandings.yearStandingMap[year]
+    // TODO ここでstadingがundifinedなら処理をスルーする
     standing.map((standingTeam: StantingTeam) =>
       this.standings.push(standingTeam)
     )

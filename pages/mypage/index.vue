@@ -16,9 +16,9 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator'
-import Profile from '~/components/molecules/MyPage/Profile.vue'
-import ChangePassword from '~/components/molecules/MyPage/ChangePassword.vue'
-import Suspend from '~/components/molecules/MyPage/Suspend.vue'
+import Profile from '~/components/molecules/mypage/Profile.vue'
+import ChangePassword from '~/components/molecules/mypage/ChangePassword.vue'
+import Suspend from '~/components/molecules/mypage/Suspend.vue'
 
 @Component({
   components: {
