@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator'
-import AccountMenu from '~/components/molecules/AccountMenu/AccountMenu.vue'
+import AccountMenu from '~/components/molecules/accountMenu/AccountMenu.vue'
 
 @Component({
   components: {
@@ -43,7 +43,7 @@ export default class Default extends Vue {
 <style lang="sass" scope>
 .toolbar-title
   color: #ffffff !important
-  text-decoration: none !important
+  text-decoration: none
   font-size: 28px !important
   padding-left: 12px
 .-logo

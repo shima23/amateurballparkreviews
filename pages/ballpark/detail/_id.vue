@@ -72,7 +72,7 @@ import Router from 'vue-router'
 import axios from 'axios'
 import Breadcrumbs, {
   Breadcrumb,
-} from '../../../components/molecules/Breadcrumbs.vue'
+} from '~/components/molecules/breadcrumb/Breadcrumbs.vue'
 import { Context } from '@nuxt/types'
 
 @Component({

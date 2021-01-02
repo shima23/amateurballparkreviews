@@ -12,7 +12,7 @@
 import { Vue, Component } from 'nuxt-property-decorator'
 import Router from 'vue-router'
 import axios from 'axios'
-import Breadcrumbs from '../../components/molecules/Breadcrumbs.vue'
+import Breadcrumbs from '~/components/molecules/breadcrumb/Breadcrumbs.vue'
 import { LoginRequestDto } from '~/types/types'
 
 @Component

@@ -5,6 +5,8 @@
     ul.mt-s.-nav
       li(v-for="(item, key) in menuList" :key="key" @click="clickMenu(item.index)") {{ item.name }}
     Top(v-if="activeMenu === 0" :leaderStatsList="leagueDto.leaderStatsList")
+    Overview(v-if="activeMenu === 1")
+    Teams(v-if="activeMenu === 2")
     Standings(v-if="activeMenu === 4")
     Stats(v-if="activeMenu===5")
 </template>
@@ -13,12 +15,14 @@
 import { Vue, Component } from 'nuxt-property-decorator'
 import { LeagueDto } from '~/types/types'
 import { LeagueResponse } from '~/types/api'
-import { Breadcrumb } from '~/components/molecules/Breadcrumbs.vue'
+import { Breadcrumb } from '~/components/molecules/breadcrumb/Breadcrumbs.vue'
 import axios from 'axios'
 import Content from '~/components/molecules/wrapper/Content.vue'
 import Top from '~/components/molecules/league/detail/Top.vue'
+import Overview from '~/components/molecules/league/detail/Overview.vue'
 import Standings from '~/components/molecules/league/detail/Standings.vue'
 import Stats from '~/components/molecules/league/detail/Stats.vue'
+import Teams from '~/components/molecules/league/detail/Teams.vue'
 
 @Component
 export default class LeagueDetailPage extends Vue {

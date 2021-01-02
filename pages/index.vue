@@ -35,49 +35,49 @@ Vue.use(Router)
 export default class Top extends Vue {
   private contentsCard = [
     {
-      imgSrc: '/_nuxt/static/logo/team.png',
+      imgSrc: '/logo/team.png',
       title: 'チーム検索',
       text: '登録されているチームを検索します',
       to: '',
     },
     {
-      imgSrc: '/_nuxt/static/logo/team.png',
+      imgSrc: '/logo/team.png',
       title: 'チーム登録/チーム管理',
       text: 'あなたの所属するチームを新規登録、および管理します',
       to: '',
     },
     {
-      imgSrc: '/_nuxt/static/logo/player.png',
+      imgSrc: '/logo/player.png',
       title: 'メンバー募集',
       text: '新規メンバーの募集を確認できます',
       to: '',
     },
     {
-      imgSrc: '/_nuxt/static/logo/league.png',
+      imgSrc: '/logo/league.png',
       title: 'リーグ検索',
       text: '地域・レベルから私設リーグを検索します',
       to: '/league',
     },
     {
-      imgSrc: '/_nuxt/static/logo/player-search.png',
+      imgSrc: '/logo/player-search.png',
       title: '選手検索',
       text: '登録されている選手を検索します',
       to: '',
     },
     {
-      imgSrc: '/_nuxt/static/logo/ballpark.png',
+      imgSrc: '/logo/ballpark.png',
       title: '球場検索',
       text: '全国の球場を検索します',
       to: '',
     },
     {
-      imgSrc: '/_nuxt/static/logo/score.png',
+      imgSrc: '/logo/score.png',
       title: 'メンバー表/スコアシート生成',
       text: 'メンバー表やスコアシートの雛形をPDF形式で出力します',
       to: '',
     },
     {
-      imgSrc: '/_nuxt/static/logo/blog.png',
+      imgSrc: '/logo/blog.png',
       title: '公式ブログ',
       text: 'JB-Links運営の広報がお伝えする公式ブログです！',
       to: '',
