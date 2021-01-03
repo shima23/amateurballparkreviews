@@ -26,7 +26,8 @@ export default {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    { src: '~/plugins/vuex'}
+    { src: '~/plugins/vuex'},
+    { src: '~plugins/quill.js', ssr: false }
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
