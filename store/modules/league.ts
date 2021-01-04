@@ -26,6 +26,20 @@ export class LeagueStore extends VuexModule {
       return response
     }
 
+    @action()
+    async updateLeague(reqData: {token: string}) {
+      var config = {
+        headers: {
+          Authorization: reqData.token
+        }
+      }
+      const response = await axios.put('http://0.0.0.0:8080/league/', {}, config)
+      if (response.status === 200) {
+        this.$store.commit('SET_LEAGUE_RESPONSE', response.data)
+      }
+      return response
+    }
+
 }
 
 export default LeagueStore.ExtractVuexModule(LeagueStore)

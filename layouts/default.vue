@@ -8,7 +8,7 @@
         v-btn(v-if="!$auth.loggedIn" elevation="0" link nuxt to="/account/register") 会員登録
         v-btn(v-if="!$auth.loggedIn" elevation="0" link nuxt to="/login") ログイン
         AccountMenu(v-if="$auth.loggedIn")
-    v-main
+    v-main.mb-xxl
       nuxt
     v-footer(absolute app height="300" color="313131")
       v-layout(justify-center)
