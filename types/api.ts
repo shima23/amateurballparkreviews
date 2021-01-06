@@ -11,6 +11,7 @@ export interface League {
     imgUrl1: string
     imgUrl2: string
     imgUrl3: string
+    description: string
 }
 
 export interface LeagueTeam {

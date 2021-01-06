@@ -5,7 +5,7 @@
     ul.mt-s.-nav
       li(v-for="(item, key) in menuList" :key="key" @click="clickMenu(item.index)") {{ item.name }}
     Top(v-if="activeMenu === 0" :leaderStatsList="leagueDto.leaderStatsList")
-    Overview(v-if="activeMenu === 1")
+    Overview(v-if="activeMenu === 1" :description="leagueDto.description")
     Teams(v-if="activeMenu === 2")
     Standings(v-if="activeMenu === 4")
     Stats(v-if="activeMenu===5")
@@ -49,6 +49,7 @@ export default class LeagueDetailPage extends Vue {
 
   private leagueDto = {
     leagueName: '',
+    description: '',
     leaderStatsList: [
       {
         title: '打率',
@@ -113,6 +114,7 @@ export default class LeagueDetailPage extends Vue {
     if (response.status === 200) {
       this.leagueInfo = this.$store.getters['modules/league/leagueResponse']
       this.leagueDto.leagueName = this.leagueInfo.league.leagueName
+      this.leagueDto.description = this.leagueInfo.league.description
     }
   }
 
