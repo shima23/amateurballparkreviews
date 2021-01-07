@@ -11,13 +11,14 @@
         div(v-html="content").-preview
         div.mt-s.-btn-action
           button.-btn-clear リセット 
-          button.ml-xs.-btn-update 更新
+          button(@click="update()").ml-xs.-btn-update 更新
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator'
 import axios from 'axios'
 import { Breadcrumb } from '~/components/molecules/breadcrumb/Breadcrumbs.vue'
+import { League } from '~/types/api'
 import Content from '~/components/molecules/wrapper/Content.vue'
 import { VueEditor } from 'vue2-editor'
 
@@ -39,11 +40,29 @@ export default class LeagueDetailEditPage extends Vue {
     ['clean'],
   ]
 
+  private league: League = {
+    id: 0,
+    leagueName: '',
+    leagueLogo: '',
+    imgUrl1: '',
+    imgUrl2: '',
+    imgUrl3: '',
+    description: '',
+  }
+
   private async update() {
+    this.league.id = Number(this.$route.params.id)
+    this.league.description = this.content
     const response = await this.$store.dispatch('modules/league/updateLeague', {
-      leagueId: this.$route.params.id,
+      league: this.league,
       token: this.$auth.getToken('local'),
     })
+    if (response.status === 200) {
+      alert('更新に成功しました')
+      this.$router.push(`/league/detail/${this.$route.params.id}`)
+    } else {
+      alert('更新に失敗しました')
+    }
   }
 }
 </script>

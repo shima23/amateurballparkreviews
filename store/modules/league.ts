@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import { VuexModule, Module, action, getter, mutation} from 'vuex-class-component'
 import axios from 'axios'
-import { LeagueResponse } from '~/types/api'
+import { LeagueResponse, League } from '~/types/api'
 
 @Module({ namespacedPath: 'modules/league/', target: 'nuxt'})
 export class LeagueStore extends VuexModule {
@@ -27,13 +27,13 @@ export class LeagueStore extends VuexModule {
     }
 
     @action()
-    async updateLeague(reqData: {token: string}) {
+    async updateLeague(reqData: {league: League, token: string}) {
       var config = {
         headers: {
           Authorization: reqData.token
         }
       }
-      const response = await axios.put('http://0.0.0.0:8080/league/', {}, config)
+      const response = await axios.put('http://0.0.0.0:8080/league/', reqData.league, config)
       if (response.status === 200) {
         this.$store.commit('SET_LEAGUE_RESPONSE', response.data)
       }
