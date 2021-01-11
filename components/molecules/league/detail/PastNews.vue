@@ -12,10 +12,12 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator'
+import { Vue, Component, Prop } from 'nuxt-property-decorator'
 
 @Component
-export default class PastNews extends Vue {}
+export default class PastNews extends Vue {
+  @Prop({ default: [] }) private pastNewsList?: Array<string>
+}
 </script>
 <style lang="sass" scoped>
 .past-news
