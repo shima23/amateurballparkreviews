@@ -9,7 +9,7 @@
     Teams(v-if="activeMenu === 2")
     Standings(v-if="activeMenu === 4")
     Stats(v-if="activeMenu===5")
-    PastNews(v-if="activeMenu=== 6")
+    PastNews(v-if="activeMenu=== 6" :leagueNotice="leagueDto.leagueNotice")
 </template>
 
 <script lang="ts">
@@ -102,6 +102,7 @@ export default class LeagueDetailPage extends Vue {
         rank3stats: '3.55',
       },
     ],
+    leagueNotice: [],
   }
 
   created() {
@@ -117,6 +118,7 @@ export default class LeagueDetailPage extends Vue {
       this.leagueInfo = this.$store.getters['modules/league/leagueResponse']
       this.leagueDto.leagueName = this.leagueInfo.league.leagueName
       this.leagueDto.description = this.leagueInfo.league.description
+      this.leagueDto.leagueNotice = this.leagueInfo.leagueNotice
     }
   }
 

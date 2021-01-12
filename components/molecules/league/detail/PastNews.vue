@@ -1,22 +1,47 @@
 <template lang="pug">
   div.mt-s.past-news
     h2 過去のお知らせ
+    p.mt-s 全 {{ leagueNotice.length }} 件
     div.mt-m
       ul.responsive-table
-        li.table-row
-          div.-date 2020/12/5
-          div.-title 新型コロナウィルスに伴うリーグ運営方針変更について
-        li.table-row
-          div.-date 2020/11/22
-          div.-title 2020年度タイトル発表！！
+        li(v-for="(item, index) in leagueNotice" :key="index" @click="open(item)").table-row
+          div.-date {{ item.updatedDate }}
+          div.-title {{ item.title }}
+          v-dialog(v-model="dialog" width="640px")
+            v-card
+              v-card-title {{ selectedItem.date }}
+              v-card-text {{ selectedItem.notice }}
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'nuxt-property-decorator'
+import { Vue, Component, Prop, Watch } from 'nuxt-property-decorator'
+import { LeagueNotice } from '~/types/api'
 
 @Component
 export default class PastNews extends Vue {
-  @Prop({ default: [] }) private pastNewsList?: Array<string>
+  @Prop({ default: [] }) private leagueNotice?: Array<LeagueNotice>
+
+  private dialog: Boolean = false
+
+  private selectedItem = {
+    date: '',
+    notice: '',
+  }
+
+  //   @Watch('dialog')
+  //   changeDialog(value: boolean) {
+  //     value ? this.open() : this.close()
+  //   }
+
+  private open(item: LeagueNotice) {
+    this.selectedItem.date = item.updatedDate
+    this.selectedItem.notice = item.notice
+    this.dialog = true
+  }
+
+  private close() {
+    this.dialog = false
+  }
 }
 </script>
 <style lang="sass" scoped>

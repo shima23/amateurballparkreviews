@@ -2,6 +2,7 @@ export interface LeagueResponse {
     league: League,
     leagueTeam: Array<LeagueTeam>
     leagueScoreSummary: Array<LeagueScoreSummary>
+    leagueNotice: Array<LeagueNotice>
 }
 
 export interface League {
@@ -23,6 +24,15 @@ export interface LeagueTeam {
 export interface LeagueScoreSummary {
     year: number
     score: Score
+}
+
+export interface LeagueNotice {
+    id: number
+    leagueId: number
+    tiile: string
+    notice: string
+    createdDate: string
+    updatedDate: string
 }
 
 export interface Score {
