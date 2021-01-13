@@ -7,6 +7,7 @@
     Top(v-if="activeMenu === 0" :leaderStatsList="leagueDto.leaderStatsList")
     Overview(v-if="activeMenu === 1" :description="leagueDto.description")
     Teams(v-if="activeMenu === 2")
+    Schedule(v-if="activeMenu === 3")
     Standings(v-if="activeMenu === 4")
     Stats(v-if="activeMenu===5")
     PastNews(v-if="activeMenu=== 6" :leagueNotice="leagueDto.leagueNotice")
@@ -24,6 +25,7 @@ import Overview from '~/components/molecules/league/detail/Overview.vue'
 import Standings from '~/components/molecules/league/detail/Standings.vue'
 import Stats from '~/components/molecules/league/detail/Stats.vue'
 import Teams from '~/components/molecules/league/detail/Teams.vue'
+import Schedule from '~/components/molecules/league/detail/Schedule.vue'
 import PastNews from '~/components/molecules/league/detail/PastNews.vue'
 
 @Component

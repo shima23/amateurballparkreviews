@@ -147,7 +147,7 @@ export default class Standings extends Vue {
   }
 }
 </script>
-<style lang="sass">
+<style lang="sass" scoped>
 table
   border-collapse: collapse
   width: 100%

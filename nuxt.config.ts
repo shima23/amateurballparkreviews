@@ -27,7 +27,8 @@ export default {
    */
   plugins: [
     { src: '~/plugins/vuex'},
-    { src: '~plugins/quill.js', ssr: false }
+    { src: '~plugins/quill.js', ssr: false },
+    { src: '~plugins/vue-full-calendar.js', ssl: false }
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
